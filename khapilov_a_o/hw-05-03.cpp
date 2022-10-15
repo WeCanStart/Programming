@@ -22,7 +22,7 @@ double summation(double x, double epsilon) {
 int main() {
     double a = 0, b = 1, sigma = 0.1, epsilon = 0.0001;
     double x = a;
-    while (x <= b) {
+    while (std::abs(x - b) < epsilon) {
         std::cout << x << ' ' << summation(x, epsilon) << ' ' << exp(2 * x) << std::endl;
         x += sigma;
     }
