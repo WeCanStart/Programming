@@ -1,6 +1,6 @@
 #include <iostream>
 
-int main() {
+void solve(){
     int n(0);
     std::cin >> n;
     for (int i = 0; i < n; ++i) {
@@ -14,4 +14,13 @@ int main() {
         }
         std::cout << std::endl;
     }
+}
+
+int main() {
+    int t(0);
+    std::cin >> t;
+    while(t--){
+        solve();
+    }
+    return 0;
 }
