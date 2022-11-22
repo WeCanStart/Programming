@@ -21,7 +21,6 @@ double cos_between(RDec2d lhs, RDec2d rhs) {
     return std::abs(dot(lhs, rhs)) / (lhs.norm() * rhs.norm());
 }
 
-
 struct RPol2d {
     double r = 0;
     double phi = 0;
