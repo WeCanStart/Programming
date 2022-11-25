@@ -21,6 +21,7 @@ int main() {
 
     bool eaten = false;
     bool hidden = false;
+    bool escaped = false;
     if (max(len(v_mouse), v_full_cat) < std::numeric_limits<double>::epsilon()) {
         std::cout << "That can continuous infinitly";
         return 0;
@@ -29,7 +30,8 @@ int main() {
     double dist_now = len(vec_cat_to_mouse);
     double dt = 0.01 / (max(len(v_mouse), v_full_cat) * (1 + 9 / exp(dist_now)));
     double t = 0;
-    while (!eaten && !hidden) {
+    while (!eaten && !hidden && !escaped) {
+        std::swap(dist_before, dist_now);
         r_mouse += v_mouse * dt;
         r_cat += v_cat * dt;
         vec_cat_to_mouse = r_mouse - r_cat;
@@ -38,14 +40,16 @@ int main() {
         if (dist_now <= c_c) {
             eaten = true;
         }
-        std::cout << r_mouse.y << ' ';
         if (r_mouse.y <= 0) {
             hidden = true;
+        }
+        if (dist_now <= dist_before) {
+            escaped = true;
         }
         dt = 0.01 / (max(len(v_mouse), v_full_cat) * (1 + 9 / exp(dist_now)));
         t += dt;
     }
-    if (eaten && hidden) {
+    if (eaten && (hidden || escaped)) {
         std::cout << "Decreas base dt, please";
         return 0;
     }
@@ -54,6 +58,9 @@ int main() {
     }
     if (hidden) {
         std::cout << "Mouse hidden in " << t << " seconds";
+    }
+    if (escaped) {
+        std::cout << "Mouse escaped in " << t << " seconds";
     }
     return 0;
 }
