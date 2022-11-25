@@ -1,0 +1,10 @@
+{
+  "version": "0.2.1",
+  "tasks": [
+    {
+      "taskLabel": "задача-vector",
+      "appliesTo": "khapilov_a_o/vector.cpp",
+      "type": "launch"
+    }
+  ]
+}
