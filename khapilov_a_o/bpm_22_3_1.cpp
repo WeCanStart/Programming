@@ -20,5 +20,6 @@ int main()
         std::cout << find(x, eps) << std::endl;
         x += delta_x;
     }
+    std::cout << find(x, eps) << std::endl;
     return 0;
 }
