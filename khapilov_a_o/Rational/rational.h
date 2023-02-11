@@ -31,7 +31,7 @@ public:
 
 private:
     int32_t gcd(int32_t a, int32_t b) const;
-    void redusing();
+    void reducing();
 private:
     int32_t num{ 0 };
     int32_t denum{ 1 };
