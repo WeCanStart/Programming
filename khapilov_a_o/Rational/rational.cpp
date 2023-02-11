@@ -1,4 +1,4 @@
-﻿#include "Rational.h"
+#include "Rational.h"
 
 Rational::Rational() {
     num = 0;
@@ -18,7 +18,7 @@ Rational::Rational(const int32_t numInp, const int32_t denumInp) {
     }
     num = numInp;
     denum = denumInp;
-    redusing();
+    reducing();
 }
 
 Rational& Rational::operator=(const Rational& rhs) {
@@ -31,7 +31,7 @@ Rational& Rational::operator+=(const Rational& rhs) {
     num *= mult;
     denum *= mult;
     num += denum / rhs.denum * rhs.num;
-    redusing();
+    reducing();
     return *this;
 }
 Rational& Rational::operator-=(const Rational& rhs) {
@@ -39,13 +39,13 @@ Rational& Rational::operator-=(const Rational& rhs) {
     num *= mult;
     denum *= mult;
     num -= denum / rhs.denum * rhs.num;
-    redusing();
+    reducing();
     return *this;
 }
 Rational& Rational::operator*=(const Rational& rhs) {
     num *= rhs.num;
     denum *= rhs.denum;
-    redusing();
+    reducing();
     return *this;
 }
 Rational& Rational::operator/=(const Rational& rhs) {
@@ -54,7 +54,7 @@ Rational& Rational::operator/=(const Rational& rhs) {
     }
     num *= rhs.denum;
     denum *= rhs.num;
-    redusing();
+    reducing();
     return *this;
 }
 
@@ -82,7 +82,7 @@ Rational& Rational::operator%=(const Rational& rhs) {
     num *= mult;
     denum *= mult;
     num %= denum / rhs.denum * rhs.num;
-    redusing();
+    reducing();
     return *this;
 }
 
@@ -182,7 +182,7 @@ int32_t Rational::gcd(int32_t a, int32_t b) const {
     return b;
 }
 
-void Rational::redusing() {
+void Rational::reducing() {
     int32_t dev = gcd(std::abs(num), denum);
     num /= dev;
     denum /= dev;
@@ -207,7 +207,7 @@ std::istream& Rational::readFrom(std::istream& istrm)
             }
             num = numInp;
             denum = denumInp;
-            redusing();
+            reducing();
         }
         else {
             istrm.setstate(std::ios_base::failbit);
