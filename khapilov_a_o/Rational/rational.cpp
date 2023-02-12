@@ -2,49 +2,49 @@
 
 Rational::Rational() {
     num = 0;
-    denum = 1;
+    denom = 1;
 }
 Rational::Rational(int32_t numInp) {
     num = numInp;
-    denum = 1;
+    denom = 1;
 }
 Rational::Rational(const Rational& myRat) {
     num = myRat.num;
-    denum = myRat.denum;
+    denom = myRat.denom;
 }
-Rational::Rational(const int32_t numInp, const int32_t denumInp) {
-    if (denumInp <= 0) {
-        throw std::invalid_argument("Expected positive denumerator");
+Rational::Rational(const int32_t numInp, const int32_t denomInp) {
+    if (denomInp <= 0) {
+        throw std::invalid_argument("Expected positive denominator");
     }
     num = numInp;
-    denum = denumInp;
+    denom = denomInp;
     reducing();
 }
 
 Rational& Rational::operator=(const Rational& rhs) {
     num = rhs.num;
-    denum = rhs.denum;
+    denom = rhs.denom;
     return *this;
 }
 Rational& Rational::operator+=(const Rational& rhs) {
-    int32_t mult = rhs.denum / gcd(denum, rhs.denum);
+    int32_t mult = rhs.denom / gcd(denom, rhs.denom);
     num *= mult;
-    denum *= mult;
-    num += denum / rhs.denum * rhs.num;
+    denom *= mult;
+    num += denom / rhs.denom * rhs.num;
     reducing();
     return *this;
 }
 Rational& Rational::operator-=(const Rational& rhs) {
-    int32_t mult = rhs.denum / gcd(denum, rhs.denum);
+    int32_t mult = rhs.denom / gcd(denom, rhs.denom);
     num *= mult;
-    denum *= mult;
-    num -= denum / rhs.denum * rhs.num;
+    denom *= mult;
+    num -= denom / rhs.denom * rhs.num;
     reducing();
     return *this;
 }
 Rational& Rational::operator*=(const Rational& rhs) {
     num *= rhs.num;
-    denum *= rhs.denum;
+    denom *= rhs.denom;
     reducing();
     return *this;
 }
@@ -52,8 +52,8 @@ Rational& Rational::operator/=(const Rational& rhs) {
     if (rhs.isZero()) {
         throw std::overflow_error("Divide by zero exception");
     }
-    num *= rhs.denum;
-    denum *= rhs.num;
+    num *= rhs.denom;
+    denom *= rhs.num;
     reducing();
     return *this;
 }
@@ -78,10 +78,10 @@ Rational Rational::operator--(int) {
 }
 
 Rational& Rational::operator%=(const Rational& rhs) {
-    int32_t mult = rhs.denum / gcd(denum, rhs.denum);
+    int32_t mult = rhs.denom / gcd(denom, rhs.denom);
     num *= mult;
-    denum *= mult;
-    num %= denum / rhs.denum * rhs.num;
+    denom *= mult;
+    num %= denom / rhs.denom * rhs.num;
     reducing();
     return *this;
 }
@@ -183,14 +183,14 @@ int32_t Rational::gcd(int32_t a, int32_t b) const {
 }
 
 void Rational::reducing() {
-    int32_t dev = gcd(std::abs(num), denum);
+    int32_t dev = gcd(std::abs(num), denom);
     num /= dev;
-    denum /= dev;
+    denom /= dev;
 }
 
 std::ostream& Rational::writeTo(std::ostream& ostrm) const
 {
-    ostrm << num << slash << denum;
+    ostrm << num << slash << denom;
     return ostrm;
 }
 
@@ -198,15 +198,15 @@ std::istream& Rational::readFrom(std::istream& istrm)
 {
     int32_t numInp(0);
     char separator(0);
-    int32_t denumInp(0);
-    istrm >> numInp >> separator >> denumInp;
+    int32_t denomInp(0);
+    istrm >> numInp >> separator >> denomInp;
     if (istrm.good()) {
         if (Rational::slash == separator) {
-            if (denumInp <= 0) {
-                throw std::invalid_argument("Expected positive denumerator");
+            if (denomInp <= 0) {
+                throw std::invalid_argument("Expected positive denominator");
             }
             num = numInp;
-            denum = denumInp;
+            denom = denomInp;
             reducing();
         }
         else {
