@@ -1,18 +1,19 @@
 #include "Rational.h"
 
-Rational::Rational() {
+Rational::Rational() {                       // default ctor
     num = 0;
     denom = 1;
 }
-Rational::Rational(int32_t numberInp) {
+Rational::Rational(int32_t numberInp) {      // int to Rational ctor
     num = numInp;
     denom = 1;
 }
-Rational::Rational(const Rational& myRat) {
+Rational::Rational(const Rational& myRat) {  // copy ctor
     num = myRat.num;
     denom = myRat.denom;
 }
-Rational::Rational(const int32_t numInp, const int32_t denomInp) {
+Rational::Rational(const int32_t numInp,
+                   const int32_t denomInp) { // partial ctor
     if (denomInp <= 0) {
         throw std::invalid_argument("Expected positive denominator");
     }
@@ -21,7 +22,7 @@ Rational::Rational(const int32_t numInp, const int32_t denomInp) {
     reducing();
 }
 
-Rational& Rational::operator=(const Rational& rhs) {
+Rational& Rational::operator=(const Rational& rhs) {  // assignment operators from here
     num = rhs.num;
     denom = rhs.denom;
     return *this;
@@ -84,9 +85,9 @@ Rational& Rational::operator%=(const Rational& rhs) {
     num %= denom / rhs.denom * rhs.num;
     reducing();
     return *this;
-}
+}                                                     // till here
 
-bool Rational::isPositive() const {
+bool Rational::isPositive() const {  // sign-like methods
     return num > 0;
 }
 bool Rational::isZero() const {
@@ -112,7 +113,7 @@ Rational& operator-(Rational& rhs) {
     return tmp;
 }
 
-Rational operator+(Rational lhs, const Rational& rhs) {
+Rational operator+(Rational lhs, const Rational& rhs) { // these use assignment analogs
     lhs += rhs;
     return lhs;
 }
@@ -128,6 +129,12 @@ Rational operator/(Rational lhs, const Rational& rhs) {
     lhs /= rhs;
     return lhs;
 }
+Rational operator%(Rational lhs, const Rational& rhs)
+{
+    lhs %= rhs;
+    return lhs;
+}
+
 Rational sqr(Rational myRat) {
     myRat *= myRat;
     return myRat;
@@ -144,12 +151,6 @@ Rational pow(Rational myRat, int32_t power) {
     return answer;
 }
 
-Rational operator%(Rational lhs, const Rational& rhs)
-{
-    lhs %= rhs;
-    return lhs;
-}
-
 bool operator==(Rational lhs, const Rational& rhs) {
     lhs -= rhs;
     return lhs.isZero();
@@ -162,13 +163,16 @@ bool operator<(Rational lhs, const Rational& rhs) {
     Rational diff = lhs - rhs;
     return diff.Rational::isNegative();
 }
-bool operator!=(const Rational& lhs, const Rational& rhs) {
+bool operator!=(const Rational& lhs,
+                const Rational& rhs) {
     return !operator==(lhs, rhs);
 }
-bool operator<=(const Rational& lhs, const Rational& rhs) {
+bool operator<=(const Rational& lhs,
+                const Rational& rhs) {
     return !operator>(lhs, rhs);
 }
-bool operator>=(const Rational& lhs, const Rational& rhs) {
+bool operator>=(const Rational& lhs,
+                const Rational& rhs) {
     return !operator<(lhs, rhs);
 }
 
@@ -182,7 +186,7 @@ int32_t Rational::gcd(int32_t a, int32_t b) const {
     return b;
 }
 
-void Rational::reducing() {
+void Rational::reducing() {  // always reduce to optimize space
     int32_t dev = gcd(std::abs(num), denom);
     num /= dev;
     denom /= dev;
