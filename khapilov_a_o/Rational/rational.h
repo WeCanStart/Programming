@@ -5,9 +5,9 @@
 class Rational {
 public:
     Rational();
-    Rational(const int32_t numInp);
+    Rational(const int32_t numberInp);
     Rational(const Rational& myRat);
-    Rational(const int32_t lhs, const int32_t rhs);
+    Rational(const int32_t num, const int32_t denom);
 
     Rational& operator=(const Rational& rhs);
     Rational& operator+=(const Rational& rhs);
@@ -34,7 +34,7 @@ private:
     void reducing();
 private:
     int32_t num{ 0 };
-    int32_t denum{ 1 };
+    int32_t denom{ 1 };
 
     static const char slash{ '/' };
 };
