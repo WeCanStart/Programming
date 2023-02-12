@@ -4,7 +4,7 @@ Rational::Rational() {
     num = 0;
     denom = 1;
 }
-Rational::Rational(int32_t numInp) {
+Rational::Rational(int32_t numberInp) {
     num = numInp;
     denom = 1;
 }
