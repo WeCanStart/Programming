@@ -5,7 +5,7 @@ Rational::Rational() {                       // default ctor
     denom = 1;
 }
 Rational::Rational(int32_t numberInp) {      // int to Rational ctor
-    num = numInp;
+    num = numberInp;
     denom = 1;
 }
 Rational::Rational(const Rational& myRat) {  // copy ctor
