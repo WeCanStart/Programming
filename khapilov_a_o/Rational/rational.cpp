@@ -97,10 +97,12 @@ bool Rational::isNegative() const {
     return num < 0;
 }
 
-std::ostream& operator<<(std::ostream& ostrm, const Rational& rhs) {
+std::ostream& operator<<(std::ostream& ostrm,
+                         const Rational& rhs) {
     return rhs.writeTo(ostrm);
 }
-std::istream& operator>>(std::istream& istrm, Rational& rhs) {
+std::istream& operator>>(std::istream& istrm,
+                         Rational& rhs) {
     return rhs.readFrom(istrm);
 }
 
