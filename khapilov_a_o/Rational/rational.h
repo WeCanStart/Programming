@@ -9,7 +9,7 @@ public:
     Rational(const Rational& myRat);
     Rational(const int32_t num, const int32_t denom);
 
-
+    ~Rational() = default;
 
     Rational& operator=(const Rational& rhs);
     Rational& operator+=(const Rational& rhs);
