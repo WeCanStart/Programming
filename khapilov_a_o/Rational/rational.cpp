@@ -147,7 +147,7 @@ Rational pow(Rational myRat, int32_t power) {
         if (power & 1) {
             answer *= myRat;
         }
-        myRat = sqr(myRat);
+        myRat *= myRat;
         power >>= 1;
     }
     return answer;
