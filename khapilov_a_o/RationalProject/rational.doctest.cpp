@@ -3,14 +3,14 @@
 #include <doctest/doctest.h>
 #include <iostream>
 
-Rational a(2, 3);
+Rational a(4, 3);
 Rational b(1, 2);
 
-Rational sum(7, 6);
-Rational dif(1, 6);
-Rational prod(1, 3);
-Rational dev(4, 3);
-Rational mod(1, 6);
+Rational sum(11, 6);
+Rational dif(5, 6);
+Rational prod(2, 3);
+Rational div(8, 3);
+Rational mod(1, 3);
 
 TEST_CASE("checking arithmetic") {
     CHECK(a + b == sum);
