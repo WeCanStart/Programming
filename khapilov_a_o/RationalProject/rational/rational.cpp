@@ -1,4 +1,5 @@
-#include "Rational.h"
+#include "rational.hpp"
+#include <iostream>
 
 Rational::Rational() {                       // default ctor
     num = 0;

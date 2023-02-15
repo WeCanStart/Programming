@@ -1,9 +1,10 @@
 ﻿#pragma once
-#ifndef RATIONAL.H
-#define RATIONAL.H
+#ifndef RATIONALHPP
+#define RATIONALHPP
 
 #include <iosfwd>
 #include <cstdint>
+#include <stdexcept>
 
 class Rational {
 public:
