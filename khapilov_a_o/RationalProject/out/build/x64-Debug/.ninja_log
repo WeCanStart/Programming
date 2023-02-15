@@ -1,6 +1,0 @@
-# ninja log v5
-4	2134	6981601582382888	CMakeFiles/rational.doctest.dir/rational.doctest.cpp.obj	a267a27949d29f7c
-22	831	6981544844572176	rational/CMakeFiles/rational.dir/rational.cpp.obj	3c66d6f8318af123
-831	895	6981544845198842	rational/rational.lib	ba19a8cd1819fd78
-895	1316	6981544848993270	rational.doctest.exe	6ae7c3ff096ca32e
-4	535	6981606661369920	rational.doctest.exe	6ae7c3ff096ca32e
