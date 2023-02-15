@@ -1,0 +1,69 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.8"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "rational",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "rational::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-rational-Debug-f31cd9b84f3d2b22b796.json",
+					"name" : "rational",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "testRat::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-testRat-Debug-0a0b24cad3cdda30c7b1.json",
+					"name" : "testRat",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/artem/source/repos/WeCanStart/Programming/khapilov_a_o/Rational/out/build/x64-Debug",
+		"source" : "C:/Users/artem/source/repos/WeCanStart/Programming/khapilov_a_o/Rational"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}
