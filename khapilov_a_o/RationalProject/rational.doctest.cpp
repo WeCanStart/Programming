@@ -6,8 +6,6 @@
 Rational a(2, 3);
 Rational b(1, 2);
 
-int32_t n{ 6 };
-
 Rational sum(7, 6);
 Rational dif(1, 6);
 Rational prod(1, 3);
