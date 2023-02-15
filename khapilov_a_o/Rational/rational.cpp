@@ -4,8 +4,9 @@ Rational::Rational() {                       // default ctor
     num = 0;
     denom = 1;
 }
-Rational::Rational(int32_t numberInp) {      // int to Rational ctor
-    num = numberInp;
+Rational::Rational(int32_t numberInp) {      // Int to Rational ctor,
+                                             // isn't explicit because we want 
+    num = numberInp;                         // to use Rationl@int operations
     denom = 1;
 }
 Rational::Rational(const Rational& myRat) {  // copy ctor
@@ -14,8 +15,12 @@ Rational::Rational(const Rational& myRat) {  // copy ctor
 }
 Rational::Rational(const int32_t numInp,
                    const int32_t denomInp) { // partial ctor
-    if (denomInp <= 0) {
-        throw std::invalid_argument("Expected positive denominator");
+    if (denomInp == 0) {
+        throw std::invalid_argument("Divide by zero exeption");
+    }
+    if (denomInp < 0) {
+        numInp *= -1;
+        denomInp *= -1;
     }
     num = numInp;
     denom = denomInp;
@@ -51,7 +56,7 @@ Rational& Rational::operator*=(const Rational& rhs) {
 }
 Rational& Rational::operator/=(const Rational& rhs) {
     if (rhs.isZero()) {
-        throw std::overflow_error("Divide by zero exception");
+        throw std::invalid_argument("Divide by zero exception");
     }
     num *= rhs.denom;
     denom *= rhs.num;
