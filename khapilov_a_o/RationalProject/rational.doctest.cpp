@@ -23,7 +23,7 @@ TEST_CASE("checking arithmetic") {
 Rational thirdPow_a(8, 27);
 Rational sqr_a(4, 9);
 
-TEST_CASE("checking castom") {
+TEST_CASE("checking custom") {
     CHECK(pow(a, 3) == thirdPow_a);
     CHECK(sqr(a) == sqr_a);
 }
